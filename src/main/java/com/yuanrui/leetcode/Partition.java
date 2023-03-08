@@ -5,7 +5,7 @@ import java.util.List;
 public class Partition {
 
     public List<List<String>> partition(String s) {
-        System.out.println("我提交3次！");
+        System.out.println("我提交12次！");
         return null;
     }
 }
