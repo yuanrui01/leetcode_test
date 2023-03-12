@@ -2,6 +2,7 @@ package com.yuanrui.leetcode;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * @author yuanrui
@@ -19,6 +20,13 @@ public class MaxScore {
         int ans = 0;
         Integer[] boxedNums = Arrays.stream(nums).boxed().toArray(Integer[]::new);
         Arrays.sort(boxedNums, Collections.reverseOrder());
+
+/*        Arrays.sort(nums,new Comparator<Integer,Integer>(){
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o2 - o1;
+            }
+        });*/
         long sum = 0;
         for(int i = 0; i < boxedNums.length; ++i){
             sum += boxedNums[i];
