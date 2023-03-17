@@ -2,7 +2,6 @@ package com.yuanrui.leetcode;
 
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
 
 /**
  * @author yuanrui
