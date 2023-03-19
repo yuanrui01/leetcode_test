@@ -10,6 +10,7 @@ public class Singleton4 {
 
     private Singleton4(){}
 
+    //禁止指令重排序，防止DCL失效，设置了内存屏障
     private static volatile Singleton4 instance;
 
     public static Singleton4 getInstance(){
