@@ -24,7 +24,7 @@ public class Intersect {
         for(int i = 0; i < nums1.length; ++i){
             Integer t = map.get(Integer.valueOf(nums1[i]));
             if(t != null){
-                map.put(nums1[i], ++t);
+                map.put(nums1[i], t++);//注意注意！！！
             }else{
                 map.put(nums1[i], 1);
             }
