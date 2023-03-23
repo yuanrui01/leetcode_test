@@ -26,7 +26,6 @@ public class FindDistance {
         List<Integer> pathq = writePath(root, q);
 
         //求出两个节点的最近公共父节点（也就是求两个List的最长公共部分）
-        //注意以下基于节点数计算，后面需要变化为路径长度
         int pathp_len = pathp.size();
         int pathq_len = pathq.size();
 
