@@ -33,6 +33,7 @@ public class FindDistance {
         int ans = 0;//最终答案
         int itr_len = Math.min(pathp_len, pathq_len);
         for(int i = 0; i < itr_len; ++i){
+            //这里的整数可能超过常量池范围，所以应该用equals比较，而不是==
             if(pathp.get(i).equals(pathq.get(i))){
                 ans++;
             }else{
