@@ -1,7 +1,9 @@
 package com.yuanrui.leetcode;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author yuanrui
@@ -31,6 +33,19 @@ public class ContainsDuplicate {
             }
         }
 
+        return false;
+    }
+
+
+    public static boolean containsDuplicate2(int[] nums) {
+        Set<Integer> set = new HashSet<>();
+        for (int num : nums) {
+            if(set.contains(num)){
+                return true;
+            }else {
+                set.add(num);
+            }
+        }
         return false;
     }
 }
