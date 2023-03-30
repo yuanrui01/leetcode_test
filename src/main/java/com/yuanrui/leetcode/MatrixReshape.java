@@ -8,7 +8,7 @@ package com.yuanrui.leetcode;
 public class MatrixReshape {
 
     public static void main(String[] args) {
-        matrixReshape(new int[][]{{1},{2},{3},{4}},2,2);
+        //matrixReshape(new int[][]{{1},{2},{3},{4}},2,2);
     }
 
     public int[][] matrixReshape(int[][] mat, int r, int c) {
