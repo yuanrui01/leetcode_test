@@ -1,5 +1,7 @@
 package com.yuanrui.leetcode;
 
+import java.util.Stack;
+
 /**
  * @author yuanrui
  * @email xdyrfree@gmail.com
@@ -42,5 +44,28 @@ public class ReverseList {
         }
 
         return cur;
+    }
+
+    public ListNode reverseList2(ListNode head) {
+        if(head == null || head.next == null){
+            return head;
+        }else{
+            Stack<ListNode> stack = new Stack<>();
+            while(head != null){
+                stack.push(head);
+                head = head.next;
+            }
+            ListNode dump = new ListNode();
+            ListNode itr = stack.pop();
+            dump.next = itr;
+
+            while(!stack.isEmpty()){
+                itr.next = stack.pop();
+                itr = itr.next;
+            }
+
+            itr.next = null;
+            return dump.next;
+        }
     }
 }
