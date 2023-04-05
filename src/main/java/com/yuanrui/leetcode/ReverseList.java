@@ -46,6 +46,7 @@ public class ReverseList {
         return cur;
     }
 
+    //ssh提交验证
     public ListNode reverseList2(ListNode head) {
         if(head == null || head.next == null){
             return head;
