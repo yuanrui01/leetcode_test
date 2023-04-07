@@ -7,15 +7,10 @@ package com.yuanrui.leetcode;
  */
 public class SearchBST {
 
-    public static TreeNode searchBST(TreeNode root, int val) {
-        if(root == null){
+    public TreeNode searchBST(TreeNode root, int val) {
+        if(root == null)
             return null;
-        }else{
-            if(root.val == val){
-                return root;
-            }else{
-                return searchBST(root.left,val) == null ? null : searchBST(root.right,val);
-            }
-        }
+        else
+            return (root.val > val) ? searchBST(root.left,val) : ((root.val < val) ? searchBST(root.right,val) : root);
     }
 }
