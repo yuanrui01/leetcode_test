@@ -1,7 +1,10 @@
 package org.example;
 
-import java.util.*;
+import java.util.List;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
 
 /**
  * @author yuanrui
@@ -9,17 +12,21 @@ import java.util.stream.Collectors;
  * @date ${DATE}-${TIME}
  */
 public class Main {
+
+    static class IntGenerator implements Supplier<Integer> {
+        private int current = 0;
+        @Override
+        public synchronized Integer get() {
+            System.out.println(Thread.currentThread().getName());;
+            return current++;
+        }
+    }
     public static void main(String[] args) {
-        List<String> list = new ArrayList<>();
-        Set<String> sSet = new HashSet<>();
-        sSet = list.stream()
-            .collect(
-                Collectors.collectingAndThen(
-                    Collectors.toCollection(
-                        () -> new TreeSet<>( Comparator.comparing( s -> s.length() ) )
-                    )
-                    , HashSet::new
-                )
-        );
+        List<Integer> x =
+                Stream.generate(new IntGenerator())
+                        .limit(100)
+                        .parallel()
+                        .collect(Collectors.toList());
+        System.out.println(x);
     }
 }
