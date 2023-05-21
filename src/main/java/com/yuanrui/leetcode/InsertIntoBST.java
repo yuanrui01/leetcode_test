@@ -9,7 +9,8 @@ import com.sun.source.tree.Tree;
  */
 public class InsertIntoBST {
 
-    public TreeNode insertIntoBST(TreeNode root, int val) {
+    public TreeNode insertIntoBST(TreeNode root, int val) throws ClassNotFoundException {
+        Class.forName("232");
         if(root == null){
             return new TreeNode(val);
         }
