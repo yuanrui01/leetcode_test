@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.LongStream;
@@ -22,11 +23,23 @@ public class Main {
         }
     }
     public static void main(String[] args) {
-        List<Integer> x =
+/*        List<Integer> x =
                 Stream.generate(new IntGenerator())
                         .limit(100)
                         .parallel()
                         .collect(Collectors.toList());
-        System.out.println(x);
+        System.out.println(x);*/
+
+        CompletableFuture<Integer> c = new CompletableFuture<>();
+        c.complete(9);
+        showr(c);
+    }
+
+    public static void showr(CompletableFuture<?> c) {
+        try{
+            System.out.println(c.get());
+        }catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

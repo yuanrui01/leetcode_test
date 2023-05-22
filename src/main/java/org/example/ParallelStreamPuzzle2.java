@@ -6,6 +6,7 @@ import java.nio.file.Paths;
 import java.util.Deque;
 import java.util.List;
 import java.util.concurrent.ConcurrentLinkedDeque;
+import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -39,5 +40,7 @@ public class ParallelStreamPuzzle2 {
                         .collect(Collectors.toList());
         System.out.println(x);
         Files.write(Paths.get("PSP2.txt"), trace);
+
+//        Executors.newCachedThreadPool().submit();
     }
 }
