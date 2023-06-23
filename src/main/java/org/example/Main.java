@@ -11,6 +11,7 @@ import java.util.function.Supplier;
 public class Main {
 
     // legion commit
+    // legion commit1
     static class IntGenerator implements Supplier<Integer> {
         private int current = 0;
         @Override
