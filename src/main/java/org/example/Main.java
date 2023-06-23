@@ -33,6 +33,7 @@ public class Main {
         CompletableFuture<Integer> c = new CompletableFuture<>();
         c.complete(9);
         showr(c);
+        //
     }
 
     public static void showr(CompletableFuture<?> c) {
