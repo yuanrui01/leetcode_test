@@ -10,6 +10,7 @@ import java.util.function.Supplier;
  */
 public class Main {
 
+    // legion commit
     static class IntGenerator implements Supplier<Integer> {
         private int current = 0;
         @Override
