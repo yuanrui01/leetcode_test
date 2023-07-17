@@ -2,6 +2,7 @@ package org.example;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Flow;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.LongStream;
@@ -30,9 +31,19 @@ public class Main {
                         .collect(Collectors.toList());
         System.out.println(x);*/
 
-        CompletableFuture<Integer> c = new CompletableFuture<>();
+/*        CompletableFuture<Integer> c = new CompletableFuture<>();
         c.complete(9);
-        showr(c);
+        showr(c);*/
+
+        Apple1 flow = new Apple1();
+
+
+        Class<Apple1> flowClass = Apple1.class;
+        String simpleName = flowClass.getSimpleName();
+        String name = flowClass.getName();
+        System.out.println(simpleName);
+        System.out.println(name);
+        System.out.println(flow.getClass().getDeclaredClasses());
     }
 
     public static void showr(CompletableFuture<?> c) {
