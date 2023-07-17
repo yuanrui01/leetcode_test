@@ -1,12 +1,7 @@
 package org.example;
 
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Flow;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import java.util.stream.LongStream;
-import java.util.stream.Stream;
 
 /**
  * @author yuanrui
@@ -15,6 +10,8 @@ import java.util.stream.Stream;
  */
 public class Main {
 
+    // legion commit
+    // legion commit1
     static class IntGenerator implements Supplier<Integer> {
         private int current = 0;
         @Override
@@ -31,19 +28,10 @@ public class Main {
                         .collect(Collectors.toList());
         System.out.println(x);*/
 
-/*        CompletableFuture<Integer> c = new CompletableFuture<>();
+        CompletableFuture<Integer> c = new CompletableFuture<>();
         c.complete(9);
-        showr(c);*/
-
-        Apple1 flow = new Apple1();
-
-
-        Class<Apple1> flowClass = Apple1.class;
-        String simpleName = flowClass.getSimpleName();
-        String name = flowClass.getName();
-        System.out.println(simpleName);
-        System.out.println(name);
-        System.out.println(flow.getClass().getDeclaredClasses());
+        showr(c);
+        //
     }
 
     public static void showr(CompletableFuture<?> c) {
@@ -53,4 +41,10 @@ public class Main {
             throw new RuntimeException(e);
         }
     }
+
+    // a b c d e f111 dssada
+    // dsdasd
+    // djlmxcnx
+    // f3 commit1
+    // f3 commit2
 }
