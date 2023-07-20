@@ -28,10 +28,14 @@ public class Main {
                         .collect(Collectors.toList());
         System.out.println(x);*/
 
-        CompletableFuture<Integer> c = new CompletableFuture<>();
+        /*CompletableFuture<Integer> c = new CompletableFuture<>();
         c.complete(9);
-        showr(c);
+        showr(c);*/
         //
+
+        String s = "1";
+
+        System.out.println(s.substring(1));
     }
 
     public static void showr(CompletableFuture<?> c) {
