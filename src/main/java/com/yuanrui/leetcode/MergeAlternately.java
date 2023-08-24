@@ -1,7 +1,7 @@
 package com.yuanrui.leetcode;
 
 /**
- * @description:
+ * @description: 1768. 交替合并字符串
  * @author: yuanrui
  * @email: xdyrfree@gmail.com
  * @date: 2023/8/24-21:11
