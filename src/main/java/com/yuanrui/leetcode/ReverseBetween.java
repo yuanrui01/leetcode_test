@@ -33,12 +33,8 @@ public class ReverseBetween {
             pre = cur;
             cur = next;
             times--;
-            if (times == 0) {
-                tmp.next.next = cur;
-                break;
-            }
         }
-        //tmp.next.next = pre;
+        tmp.next.next = cur;
         tmp.next = pre;
 
         return dumb.next;
