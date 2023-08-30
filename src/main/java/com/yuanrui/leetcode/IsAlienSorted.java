@@ -15,13 +15,11 @@ public class IsAlienSorted {
             return true;
         int[] alienOrder = new int[27];
         char[] orderArray = order.toCharArray();
-        for (int i = 0; i < orderArray.length; ++i) {
+        for (int i = 0; i < orderArray.length; ++i)
             alienOrder[orderArray[i] - 'a'] = i;
-        }
-        for (int i = 0; i < words.length - 1; ++i) {
+        for (int i = 0; i < words.length - 1; ++i)
             if (!goodOrder(words[i], words[i+1], alienOrder))
                 return false;
-        }
         return true;
     }
 
@@ -40,6 +38,4 @@ public class IsAlienSorted {
         }
         return word1Len <= word2Len;
     }
-
-
 }
