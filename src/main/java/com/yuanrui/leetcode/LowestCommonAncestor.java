@@ -4,37 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 236. 二叉树的最近公共祖先
  * @author yuanrui
  * @email xdyrfree@gmail.com
  * @date 2023/4/9-2:07
  */
 public class LowestCommonAncestor {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        List<TreeNode> path_p = getPath(root, p);
-        List<TreeNode> path_q = getPath(root, q);
-        TreeNode ancestor = null;
-        for (int i = 0; i < path_p.size() && i < path_q.size(); ++i) {
-            if (path_p.get(i) == path_q.get(i)) {
-                ancestor = path_p.get(i);
-            } else {
-                break;
-            }
-        }
-        return ancestor;
-    }
+        if (root == null || root.val == p.val || root.val == q.val)
+            return root;
+        TreeNode left = lowestCommonAncestor(root.left, p, q);
+        TreeNode right = lowestCommonAncestor(root.right, p, q);
 
-    private List<TreeNode> getPath(TreeNode root, TreeNode target){
-        List<TreeNode> res = new ArrayList<>();
-        res.add(root);
-        while(root != target){
-            if(root.val < target.val){
-                root = root.right;
-            } else {
-                root = root.left;
-            }
-            res.add(root);
-        }
-
-        return res;
+        if (left != null && right != null)
+            return root;
+        else if (left != null)
+            return left;
+        else if (right != null)
+            return right;
+        else
+            return null;
     }
 }
