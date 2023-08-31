@@ -16,21 +16,25 @@ public class ReformatNumber {
     }
 
     public static String reformatNumber(String number) {
-        List<String> ilist = new ArrayList<>();
+        StringBuilder sb = new StringBuilder();
         number = number.replaceAll("[\s-]", "");
         while (number.length() > 4) {
-            ilist.add(number.substring(0,3));
+            sb.append(number.substring(0, 3)).append("-");
             number = number.substring(3);
         }
         int remainderLen = number.length();
 
         if (remainderLen == 4) {
-            ilist.add(number.substring(0,2));
-            ilist.add(number.substring(2));
+            sb.append(number.substring(0, 2)).append("-");
+            sb.append(number.substring(2));
         } else if (remainderLen > 0){
-            ilist.add(number);
+            sb.append(number);
         }
 
-        return String.join("-", ilist);
+        String ans = sb.toString();
+        if (ans.charAt(ans.length() - 1) == '-')
+            return ans.substring(0, ans.length() - 1);
+        else
+            return ans;
     }
 }
