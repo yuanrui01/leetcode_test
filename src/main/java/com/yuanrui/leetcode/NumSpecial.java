@@ -1,6 +1,7 @@
 package com.yuanrui.leetcode;
 
 /**
+ * 1582.二进制矩阵中的特殊位置
  * @author: yuanrui
  */
 public class NumSpecial {
