@@ -1,6 +1,7 @@
 package com.yuanrui.leetcode;
 
 /**
+ * 2446. 判断两个事件是否存在冲突
  * @author: yuanrui
  */
 public class HaveConflict {
