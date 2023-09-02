@@ -1,7 +1,6 @@
 package com.yuanrui.leetcode;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -71,4 +70,61 @@ public class SolveNQueens {
         }
         return slist;
     }
+
+
+//    public static List<List<String>> solveNQueens(int n) {
+//        if (n == 1)
+//            return List.of(List.of("Q"));
+//        List<Integer> line = new ArrayList<>();
+//        IntStream.rangeClosed(0, n - 1).forEach(line::add);
+//        boolean[] colFlag = new boolean[n];
+//        boolean[] forwardSlash = new boolean[2 * n - 1];
+//        boolean[] backSlash = new boolean[2 * n - 1];
+//        List<List<String>> ans = new ArrayList<>();
+//        dfs(line, 0, ans, colFlag, forwardSlash, backSlash);
+//        return ans;
+//    }
+//
+//    private static void dfs(List<Integer> line, int idx, List<List<String>> ans, boolean[] colFlag, boolean[] forwardSlash, boolean[] backSlash) {
+//        if (idx == line.size()) {
+//            ans.add(generateStr(line));
+//            return;
+//        }
+//
+//        for (int i = idx; i < line.size(); ++i) {
+//            if (!colFlag[line.get(i)] && !forwardSlash[idx + line.get(i)] && !backSlash[idx + line.size() - 1 - line.get(i)]) {
+//                colFlag[line.get(i)] = true;
+//                forwardSlash[idx + line.get(i)] = true;
+//                backSlash[idx + line.size() - 1 - line.get(i)] = true;
+//                Collections.swap(line, i, idx);
+//                // ====================
+//                dfs(line, idx + 1, ans, colFlag, forwardSlash, backSlash);
+//                // ====================
+//                Collections.swap(line, i, idx);
+//                backSlash[idx + line.size() - 1 - line.get(i)] = false;
+//                forwardSlash[idx + line.get(i)] = false;
+//                colFlag[line.get(i)] = false;
+//            }
+//        }
+//    }
+//
+//    private static void swap(int[] num, int i, int j) {
+//        int tmp = num[i];
+//        num[i] = num[j];
+//        num[j] = tmp;
+//    }
+//
+//    private static List<String> generateStr(List<Integer> line) {
+//        List<String> slist = new ArrayList<>();
+//        for (int k : line) {
+//            StringBuilder sb = new StringBuilder();
+//            for (int j = 0; j < line.size(); ++j)
+//                if (j == k)
+//                    sb.append("Q");
+//                else
+//                    sb.append(".");
+//            slist.add(sb.toString());
+//        }
+//        return slist;
+//    }
 }
