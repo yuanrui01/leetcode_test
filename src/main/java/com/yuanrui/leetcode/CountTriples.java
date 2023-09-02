@@ -13,30 +13,32 @@ public class CountTriples {
     public static void main(String[] args) {
         long l = System.currentTimeMillis();
 
-        countTriples(12);
+        System.out.println(countTriples(5));
 
         System.out.println(System.currentTimeMillis() - l);
 
     }
 
     public static int countTriples(int n) {
-        List<List<Integer>> ans = new ArrayList<>();
-        List<Integer> triple = new ArrayList<>();
+        int[] ans = new int[]{0};
+        int[] triple = new int[3];
         int[] num = IntStream.rangeClosed(1, n).toArray();
         dfs(num, 0, ans, triple);
-        return ans.size();
+        return ans[0];
     }
 
-    private static void dfs(int[] num, int idx, List<List<Integer>> ans, List<Integer> triple) {
+    private static void dfs(int[] num, int idx, int[] ans, int[] triple) {
 
-        if (idx == 3)
-            if ((triple.get(0)*triple.get(0) + triple.get(1)*triple.get(1)) == triple.get(2)*triple.get(2))
-                ans.add(triple);
+        if (idx == 3) {
+            if ((triple[0]*triple[0] + triple[1]*triple[1]) == triple[2]*triple[2])
+                ans[0]++;
+            return;
+        }
 
         for (int i = idx; i < num.length; ++i) {
-            triple.add(num[i]);
+            triple[idx] = num[i];
+
             dfs(num, idx + 1, ans, triple);
-            triple.remove(triple.size() - 1);
         }
     }
 }
