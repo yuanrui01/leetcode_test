@@ -26,24 +26,22 @@ public class MaxSum {
 
     public static long maxSum2(List<Integer> nums, int m, int k) {
         long sum = 0L;
-        int[] array = nums.stream().mapToInt(i -> i).toArray();
-        Map<Integer, Integer> map = new HashMap<>();
         long tmpSum = 0L;
+        Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < k; ++i) {
-            tmpSum += array[i];
-            map.merge(array[i], 1, Integer::sum);
+            tmpSum += nums.get(i);
+            map.merge(nums.get(i), 1, Integer::sum);
         }
         if (map.keySet().size() >= m)
             sum = tmpSum;
-        for(int i = 1; i <= array.length - k; i+=1) {
-            tmpSum -= array[i-1];
-            tmpSum += array[i+k-1];
-            if (map.containsKey(array[i-1]))
-                if (map.get(array[i-1]) == 1)
-                    map.remove(array[i-1]);
-                else
-                    map.merge(array[i-1], -1, Integer::sum);
-            map.merge(array[i+k-1], 1, Integer::sum);
+        for(int i = 1; i <= nums.size() - k; i+=1) {
+            tmpSum -= nums.get(i-1);
+            tmpSum += nums.get(i+k-1);
+            if (map.get(nums.get(i-1)) == 1)
+                map.remove(nums.get(i-1));
+            else
+                map.merge(nums.get(i-1), -1, Integer::sum);
+            map.merge(nums.get(i+k-1), 1, Integer::sum);
             if (map.keySet().size() >= m)
                 sum = Math.max(sum, tmpSum);
         }
