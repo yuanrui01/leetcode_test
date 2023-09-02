@@ -20,11 +20,10 @@ public class SolveNQueens {
     public static List<List<String>> solveNQueens(int n) {
         if (n == 1)
             return List.of(List.of("Q"));
-
         int[] line = IntStream.rangeClosed(0, n - 1).toArray();
         boolean[] colFlag = new boolean[n];
-        boolean[] forwardSlash = new boolean[2*n - 1];
-        boolean[] backSlash = new boolean[2*n - 1];
+        boolean[] forwardSlash = new boolean[2 * n - 1];
+        boolean[] backSlash = new boolean[2 * n - 1];
         List<List<String>> ans = new ArrayList<>();
         dfs(line, 0, ans, colFlag, forwardSlash, backSlash);
         return ans;
@@ -61,16 +60,13 @@ public class SolveNQueens {
 
     private static List<String> generateStr(int[] line) {
         List<String> slist = new ArrayList<>();
-
-        for (int i = 0; i < line.length; ++i) {
+        for (int k : line) {
             StringBuilder sb = new StringBuilder();
-            int tag = line[i];
-            for (int j = 0; j < line.length; ++j) {
-                if (j == tag )
+            for (int j = 0; j < line.length; ++j)
+                if (j == k)
                     sb.append("Q");
                 else
                     sb.append(".");
-            }
             slist.add(sb.toString());
         }
         return slist;
