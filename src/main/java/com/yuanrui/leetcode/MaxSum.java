@@ -48,7 +48,6 @@ public class MaxSum {
             long tmpSum = 0L;
             for (int i = 0; i < k; ++i) {
                 tmpSum += array[i];
-
                 map.merge(array[i], 1, Integer::sum);
             }
             if (map.keySet().size() >= m)
