@@ -49,7 +49,7 @@ public class Permute {
         }
 
         int n = nums.length;
-        backtrack(n, output, res, 0);
+        backtrack2(n, output, res, 0);
         return res;
     }
 
@@ -62,7 +62,7 @@ public class Permute {
             // 动态维护数组
             Collections.swap(output, first, i);
             // 继续递归填下一个数
-            backtrack(n, output, res, first + 1);
+            backtrack2(n, output, res, first + 1);
             // 撤销操作
             Collections.swap(output, first, i);
         }
