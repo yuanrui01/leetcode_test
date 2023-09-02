@@ -15,7 +15,7 @@ public class CountTriples {
 
         System.out.println(countTriples(5));
 
-        System.out.println(System.currentTimeMillis() - l);
+        //System.out.println(System.currentTimeMillis() - l);
 
     }
 
@@ -29,15 +29,22 @@ public class CountTriples {
 
     private static void dfs(int[] num, int idx, int[] ans, int[] triple) {
 
-        if (idx == 3) {
+        if (idx == 1 && (triple[0] >= Math.sqrt((double) (num.length * num.length) / 2)))
+            return;
+
+        if (idx == 2 && (triple[0]*triple[0] + triple[1]*triple[1])>(num.length*num.length))
+            return;
+
+        if (idx >= 3) {
             if ((triple[0]*triple[0] + triple[1]*triple[1]) == triple[2]*triple[2])
-                ans[0]++;
+                ans[0]+=2;
             return;
         }
 
-        for (int i = idx; i < num.length; ++i) {
+        for (int i = triple[idx]; i < num.length; ++i) {
             triple[idx] = num[i];
-
+            if (idx !=triple.length - 1)
+                triple[idx + 1] = num[i];
             dfs(num, idx + 1, ans, triple);
         }
     }
