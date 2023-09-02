@@ -20,6 +20,8 @@ public class MaxSum {
         System.out.println(maxSum2(List.of(1), 1, 1));
         System.out.println(maxSum2(List.of(1,1,1,3), 2, 2));
         System.out.println(maxSum2(List.of(1,1,2,2), 1, 3));
+
+        System.out.println(maxSum2(List.of(10,9,7,1,7,6,9,9,9), 3, 3));
     }
 
     public static long maxSum2(List<Integer> nums, int m, int k) {
@@ -40,7 +42,7 @@ public class MaxSum {
                 if (map.get(array[i-1]) == 1)
                     map.remove(array[i-1]);
                 else
-                    map.merge(array[i+k-1], -1, Integer::sum);
+                    map.merge(array[i-1], -1, Integer::sum);
             map.merge(array[i+k-1], 1, Integer::sum);
             if (map.keySet().size() >= m)
                 sum = Math.max(sum, tmpSum);
