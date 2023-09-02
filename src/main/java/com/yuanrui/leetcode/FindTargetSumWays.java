@@ -16,13 +16,13 @@ public class FindTargetSumWays {
         return ans[0];
     }
 
+    // 回溯写法
     private static void targetSumways(int[] ans, int[] nums, int idx, int target) {
         if (idx == -1) {
             if (target == 0)
                 ans[0]++;
             return;
         }
-
         targetSumways(ans, nums, idx - 1, target - nums[idx]);
         targetSumways(ans, nums, idx - 1, target + nums[idx]);
     }
