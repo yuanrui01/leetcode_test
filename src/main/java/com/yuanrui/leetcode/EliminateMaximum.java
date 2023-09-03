@@ -30,7 +30,7 @@ public class EliminateMaximum {
             if (seconds[i] - i >= 0)
                 ans++;
             else
-                break;;
+                break;
         return ans;
     }
 }
