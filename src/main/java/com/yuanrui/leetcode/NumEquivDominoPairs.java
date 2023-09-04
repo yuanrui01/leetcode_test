@@ -14,28 +14,19 @@ public class NumEquivDominoPairs {
         int ans = 0;
         int[][] count = new int[10][10];
         boolean[][] isCal = new boolean[10][10];
-
-        for (int i = 0; i < dominoes.length; ++i) {
-            count[dominoes[i][0]][dominoes[i][1]]++;
-            //count[dominoes[i][1]][dominoes[i][0]]++;
+        for (int[] dominoe : dominoes) {
+            count[dominoe[0]][dominoe[1]]++;
         }
-
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; ++j) {
+        for (int i = 0; i < 10; i++)
+            for (int j = 0; j < 10; ++j)
                 if (!isCal[i][j]) {
                     int n = count[i][j];
-                    if (i != j) {
+                    if (i != j)
                         n += count[j][i];
-                    }
-                    if (n >= 2) {
+                    if (n >= 2)
                         ans += n*(n-1)/2;
-                    }
                     isCal[j][i]=true;
                 }
-                isCal[i][j] = true;
-            }
-        }
-
         return ans;
     }
 
