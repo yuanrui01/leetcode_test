@@ -18,7 +18,9 @@ public class RangeSumBST {
             return;
         if (root.val >= low && root.val <= high)
             ans[0] += root.val;
-        traversal(root.left, low, high, ans);
-        traversal(root.right, low, high, ans);
+        if (root.val >= low)
+            traversal(root.left, low, high, ans);
+        if (root.val <= high)
+            traversal(root.right, low, high, ans);
     }
 }
