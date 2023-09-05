@@ -4,9 +4,8 @@ import java.util.Arrays;
 import java.util.Collections;
 
 /**
+ * 2587. 重排数组以得到最大前缀分数
  * @author yuanrui
- * @email xdyrfree@gmail.com
- * @date 2023/3/12-11:17
  */
 public class MaxScore {
 
@@ -17,25 +16,14 @@ public class MaxScore {
 
     public static int maxScore(int[] nums) {
         int ans = 0;
-        Integer[] boxedNums = Arrays.stream(nums).boxed().toArray(Integer[]::new);
-        Arrays.sort(boxedNums, Collections.reverseOrder());
 
-/*        Arrays.sort(nums,new Comparator<Integer,Integer>(){
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return o2 - o1;
-            }
-        });*/
+        Arrays.sort(nums);
         long sum = 0;
-        for(int i = 0; i < boxedNums.length; ++i){
-            sum += boxedNums[i];
-            if(sum > 0){
+        for (int i = nums.length - 1; i >= 0; --i) {
+            sum += nums[i];
+            if (sum > 0)
                 ans++;
-            }else{
-                return ans;
-            }
         }
-
         return ans;
     }
 }
