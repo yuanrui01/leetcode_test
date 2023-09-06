@@ -19,19 +19,7 @@ public class CoinChange {
 
 
     /**
-     * 示例 1：
-     * ==================================
-     * 输入：coins = [1, 2, 5], amount = 11
-     * 输出：3
-     * 解释：11 = 5 + 5 + 1
-     * 示例 2：
-     * ==================================
-     * 输入：coins = [2], amount = 3
-     * 输出：-1
-     * 示例 3：
-     * ==================================
-     * 输入：coins = [1], amount = 0
-     * 输出：0
+     * 最常规：回溯 + 记忆化搜索
      */
     private static int traceBack(int[] coins, int idx, int amount, int[][] cache) {
         if (idx == -1) {
