@@ -1,5 +1,6 @@
 package com.yuanrui.leetcode;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -41,5 +42,23 @@ public class CoinChange {
         int situation2 = cache[idx + 1][amount - coins[idx]];
 
         return Math.min(situation1, situation2 == Integer.MAX_VALUE ? situation2 : situation2 + 1);
+    }
+
+
+    /**
+     * 大佬的空间优化写法，有空看看
+     * @param coins
+     * @param amount
+     * @return
+     */
+    public int coinChange2(int[] coins, int amount) {
+        int[] f = new int[amount + 1];
+        Arrays.fill(f, Integer.MAX_VALUE / 2); // 除 2 是防止下面 + 1 溢出
+        f[0] = 0;
+        for (int x : coins)
+            for (int c = x; c <= amount; ++c)
+                f[c] = Math.min(f[c], f[c - x] + 1);
+        int ans = f[amount];
+        return ans < Integer.MAX_VALUE / 2 ? ans : -1;
     }
 }
