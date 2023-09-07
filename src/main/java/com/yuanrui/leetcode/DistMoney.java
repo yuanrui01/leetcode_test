@@ -7,17 +7,12 @@ package com.yuanrui.leetcode;
 public class DistMoney {
 
     public int distMoney(int money, int children) {
-        if (money < children)
+        if (money < children || money == 4 && children == 1)
             return -1;
         int rest = money - children;
-        if (rest == 0)
-            return 0;
         int max = rest / 7;
         if (max == 0) {
-            if (money == 4&& children == 1)
-                return -1;
-            else
-                return 0;
+            return 0;
         } else {
             int mod = rest % 7;
             if (children - max == 1 && mod == 3) {
