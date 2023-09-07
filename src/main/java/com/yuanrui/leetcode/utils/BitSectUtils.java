@@ -40,4 +40,26 @@ public class BitSectUtils {
         }
         return right; // 或者 left+1
     }
+
+
+    /**
+     * 第一个小于等于target的元素下标
+     * @param g
+     * @param target
+     * @return
+     */
+    private static int upperBound(int[] g, int target) {
+        int left = -1, right = g.length; // 开区间 (left, right)
+        while (left + 1 < right) { // 区间不为空
+            // 循环不变量：
+            // nums[left] < target
+            // nums[right] >= target
+            int mid = (left + right) >>> 1;
+            if (g[mid] < target)
+                right = mid; // 范围缩小到 (mid, right)
+            else
+                left = mid; // 范围缩小到 (left, mid)
+        }
+        return right; // 或者 left+1
+    }
 }
