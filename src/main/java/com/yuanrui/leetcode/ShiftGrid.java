@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * 1260. 二维网格迁移
+ */
 public class ShiftGrid {
 
     public List<List<Integer>> shiftGrid(int[][] grid, int k) {
