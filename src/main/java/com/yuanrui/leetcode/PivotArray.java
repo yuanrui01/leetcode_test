@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * 2161. 根据给定数字划分数组
+ */
 public class PivotArray {
 
 
