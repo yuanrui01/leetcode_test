@@ -13,7 +13,7 @@ public class LongestPath {
     int max;
     public int longestPath(int[] parent, String s) {
         map = new HashMap<>();
-        max = Integer.MIN_VALUE;
+        max = 1;
         this.s = s;
 
         // 构造节点关系
@@ -27,38 +27,22 @@ public class LongestPath {
             }
         }
         dp(0);
-        return Math.max(max, 1);
+        return max;
     }
 
     private int dp(int root) {
         if (map.get(root) == null)
             return 1;
-        int ans = 0;
         char rootChar = s.charAt(root);
-        List<Integer> children = map.get(root);
-        int first = -1;
-        int second = -1;
-        for (Integer child : children) {
+        int maxLen = 0;
+        for (Integer child : map.get(root)) {
             int subMax = dp(child);
             if (rootChar != s.charAt(child)) {
-                if (subMax > first) {
-                    second = first;
-                    first = subMax;
-                } else if (subMax <= first && subMax > second) {
-                    second = subMax;
-                }
+                max = Math.max(max, maxLen + subMax + 1);
+                maxLen = Math.max(maxLen, subMax);
             }
         }
-        if (first > -1 && second == -1) {
-            ans = first + 1;
-            max = Math.max(max, ans);
-        } else if (second > -1){
-            ans = first + 1;
-            max = Math.max(max, ans + second);
-        } else {
-            max = Math.max(max, 1);
-        }
-        return Math.max(1, ans);
+        return maxLen + 1;
     }
 
     public static void main(String[] args) {
