@@ -10,7 +10,6 @@ public class Rob {
         int[] ans = dp(root);
         return Math.max(ans[0], ans[1]);
     }
-
     private int[] dp(TreeNode root) {
         if (root == null)
             return new int[]{0,0};
