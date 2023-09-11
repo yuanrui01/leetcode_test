@@ -24,18 +24,15 @@ public class CarPooling {
         for (int[] trip : trips) {
             far = Math.max(far, trip[2]);
         }
-
         int[] diff = new int[far + 2];
         diff[0] = capacity;
-
         for (int[] trip : trips) {
             diff[trip[1] + 1] -= trip[0];
             diff[trip[2] + 1] += trip[0];
         }
-
         int accum = 0;
-        for (int i = 0; i < diff.length; ++i) {
-            accum += diff[i];
+        for (int j : diff) {
+            accum += j;
             if (accum < 0)
                 return false;
         }
