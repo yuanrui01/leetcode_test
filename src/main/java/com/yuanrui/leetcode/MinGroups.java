@@ -6,7 +6,10 @@ package com.yuanrui.leetcode;
  */
 public class MinGroups {
     public int minGroups(int[][] intervals) {
-        int[] diff = new int[1000002];
+        int maxIdx = -1;
+        for (int[] interval : intervals)
+            maxIdx = Math.max(maxIdx, interval[1]);
+        int[] diff = new int[maxIdx + 2];
         for (int[] interval : intervals) {
             diff[interval[0]] += 1;
             diff[interval[1] + 1] -= 1;
