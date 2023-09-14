@@ -1,5 +1,6 @@
 package com.yuanrui.leetcode;
 
+import java.sql.Array;
 import java.util.*;
 
 /**
@@ -9,9 +10,12 @@ import java.util.*;
 public class CanFinish {
 
     public static void main(String[] args) {
-        int numCourses = 4;
-        int[][] prerequisites = {{2,0},{1,0},{3,1},{3,2},{1,3}};
-        System.out.println(canFinish(numCourses, prerequisites));
+//        int numCourses = 4;
+//        int[][] prerequisites = {{2,0},{1,0},{3,1},{3,2},{1,3}};
+//        System.out.println(canFinish(numCourses, prerequisites));
+        int numCourses = 20;
+        int[][] prerequisites = {{0,10},{3,18},{5,5},{6,11},{11,14},{13,1},{15,1},{17,4}};
+        System.out.println(canFinish2(numCourses, prerequisites));
     }
 
     public static boolean canFinish(int numCourses, int[][] prerequisites) {
@@ -65,4 +69,35 @@ public class CanFinish {
         finish[lesson] = true;
         return true;
     }
+
+
+    public static boolean canFinish2(int numCourses, int[][] prerequisites) {
+        int[] ans = topoSort(numCourses, prerequisites);
+        return ans.length == numCourses;
+    }
+
+    private static int[] topoSort(int numCourses, int[][] prerequisites) {
+        List<Integer> ans = new ArrayList<>();
+        List<Integer>[] g = new List[numCourses];
+        Arrays.setAll(g, e -> new ArrayList<>());
+        int[] inDegree = new int[numCourses];
+        for (int[] prerequisite : prerequisites) {
+            g[prerequisite[1]].add(prerequisite[0]);
+            inDegree[prerequisite[0]]++;
+        }
+        Deque<Integer> q = new ArrayDeque<>();
+        for (int i = 0; i < inDegree.length; ++i)
+            if (inDegree[i] == 0)
+                q.add(i);
+        while (!q.isEmpty()) {
+            Integer poll = q.poll();
+            ans.add(poll);
+            for (Integer i : g[poll])
+                if (--inDegree[i] == 0)
+                    q.add(i);
+        }
+        return ans.stream().mapToInt(i->i).toArray();
+    }
+
+
 }
