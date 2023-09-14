@@ -67,4 +67,32 @@ public class FindOrder {
         ans.add(lesson);
         return true;
     }
+
+    public int[] findOrder2(int numCourses, int[][] prerequisites) {
+        int[] ans = topoSort(numCourses, prerequisites);
+        return ans.length != numCourses ? new int[0] : ans;
+    }
+
+    private static int[] topoSort(int numCourses, int[][] prerequisites) {
+        List<Integer> order = new ArrayList<>();
+        List<Integer>[] g = new List[numCourses];
+        Arrays.setAll(g, e -> new ArrayList<>());
+        int[] inDegree = new int[numCourses];
+        for (int[] prerequisite : prerequisites) {
+            g[prerequisite[1]].add(prerequisite[0]);
+            inDegree[prerequisite[0]]++;
+        }
+        Deque<Integer> q = new ArrayDeque<>();
+        for (int i = 0; i < inDegree.length; ++i)
+            if (inDegree[i] == 0)
+                q.add(i);
+        while (!q.isEmpty()) {
+            Integer poll = q.poll();
+            order.add(poll);
+            for (Integer i : g[poll])
+                if (--inDegree[i] == 0)
+                    q.add(i);
+        }
+        return order.stream().mapToInt(i->i).toArray();
+    }
 }
