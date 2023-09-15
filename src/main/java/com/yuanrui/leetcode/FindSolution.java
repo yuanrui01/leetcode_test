@@ -18,12 +18,8 @@ public class FindSolution {
         List<List<Integer>> ans = new ArrayList<>();
         for (int i = 1; i <= z; ++i)
             for (int j = 1; j <= z; ++j)
-                if (customfunction.f(i,j) == z) {
-                    List<Integer> subAns = new ArrayList<>();
-                    subAns.add(i);
-                    subAns.add(j);
-                    ans.add(subAns);
-                }
+                if (customfunction.f(i,j) == z)
+                    ans.add(List.of(i,j));
         return ans;
     }
 }
