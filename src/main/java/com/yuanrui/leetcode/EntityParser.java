@@ -1,5 +1,7 @@
 package com.yuanrui.leetcode;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Stack;
 
 /**
@@ -9,29 +11,31 @@ import java.util.Stack;
 public class EntityParser {
 
     public static String entityParser(String text) {
-        Stack<Integer> andStack = new Stack<>();
+        Deque<Integer> andStack = new ArrayDeque<>();
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < text.length(); ++i) {
-            sb.append(text.charAt(i));
+        int textLen = text.length();
+        text.replace("32","sfsds");
+        for (int i = 0; i < textLen; ++i) {
+            int k = i;
+            while (i < text.length() && text.charAt(i) != '&' && text.charAt(i) != ';')
+                i++;
+            sb.append(text.substring(k, Math.min(i + 1, textLen)));
+            if (i == textLen)
+                break;
             if (text.charAt(i) == '&')
                 andStack.push(i);
             else if (text.charAt(i) == ';' && !andStack.isEmpty()) {
-                Integer pop = andStack.pop();
+                int pop = andStack.pop();
                 if (i - pop <= 7) {
                     String sub = text.substring(pop, i);
                     int len = sb.length();
-                    if (sub.equals("&quot")) {
-                        sb.replace(len - 6, len, "\"");
-                    } else if (sub.equals("&apos")) {
-                        sb.replace(len - 6, len, "'");
-                    } else if (sub.equals("&amp")) {
-                        sb.replace(len - 5, len, "&");
-                    } else if (sub.equals("&gt")) {
-                        sb.replace(len - 4, len, ">");
-                    } else if (sub.equals("&lt")) {
-                        sb.replace(len - 4, len, "<");
-                    } else if (sub.equals("&frasl")) {
-                        sb.replace(len - 7, len, "/");
+                    switch (sub) {
+                        case "&quot" -> sb.replace(len - 6, len, "\"");
+                        case "&apos" -> sb.replace(len - 6, len, "'");
+                        case "&amp" -> sb.replace(len - 5, len, "&");
+                        case "&gt" -> sb.replace(len - 4, len, ">");
+                        case "&lt" -> sb.replace(len - 4, len, "<");
+                        case "&frasl" -> sb.replace(len - 7, len, "/");
                     }
                 }
             }
@@ -42,7 +46,7 @@ public class EntityParser {
 
 
     public static void main(String[] args) {
-        String text = "and I quote: &quot;...&quot;";
+        String text = "&amp; is an HTML entity but &ambassador; is not.";
 
         System.out.println(entityParser(text));
     }
