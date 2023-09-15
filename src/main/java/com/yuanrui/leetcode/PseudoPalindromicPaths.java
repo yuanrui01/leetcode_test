@@ -1,7 +1,5 @@
 package com.yuanrui.leetcode;
 
-import java.util.Stack;
-
 /**
  * 1457. Pseudo-Palindromic Paths in a Binary Tree
  * @author: yuanrui
