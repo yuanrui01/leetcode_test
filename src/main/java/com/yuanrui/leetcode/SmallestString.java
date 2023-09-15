@@ -11,11 +11,9 @@ public class SmallestString {
 
     public String smallestString(String s) {
         List<Integer> aIdx = new ArrayList<>();
-
-        for (int i = 0; i < s.length(); i++) {
+        for (int i = 0; i < s.length(); i++)
             if (s.charAt(i) == 'a')
                 aIdx.add(i);
-        }
         int left = -1;
         int right = s.length();
         if (!aIdx.isEmpty()) {
