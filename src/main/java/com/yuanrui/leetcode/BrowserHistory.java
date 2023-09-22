@@ -1,6 +1,7 @@
 package com.yuanrui.leetcode;
 
 /**
+ * 1472. 设计浏览器历史记录
  * @author: yuanrui
  */
 public class BrowserHistory {
