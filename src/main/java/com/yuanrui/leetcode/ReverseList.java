@@ -8,6 +8,8 @@ import java.util.Stack;
  * @date 2023/2/20-0:21
  */
 public class ReverseList {
+
+    private ListNode ans;
     public static void main(String[] args) {
         ListNode listNode5 = new ListNode(5);
         ListNode listNode4 = new ListNode(4,listNode5);
@@ -16,6 +18,8 @@ public class ReverseList {
         ListNode listNode1 = new ListNode(1,listNode2);
 
         ListNode listNode = reverseList(listNode1);
+
+
 
     }
 
@@ -84,5 +88,15 @@ public class ReverseList {
             }
             return pre;
         }
+    }
+
+
+    public void recursive(ListNode pre, ListNode head) {
+        if (head == null || head.next == null){
+            ans = head;
+            return;
+        }
+        recursive(head, head.next);
+        head.next = pre;
     }
 }
