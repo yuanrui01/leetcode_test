@@ -8,25 +8,31 @@ import java.util.Map;
  */
 class UndergroundSystem {
 
-    Map<Integer, String> stationRecord;
-    Map<Integer, Integer> idRecord;
+    class Start {
+        String station;
+        int time;
 
+        public Start(String station, int time) {
+            this.station = station;
+            this.time = time;
+        }
+    }
+
+    Map<Integer, Start> stationRecord;
     Map<String, int[]> map;
 
     public UndergroundSystem() {
         stationRecord = new HashMap<>();
-        idRecord = new HashMap<>();
         map = new HashMap<>();
     }
 
     public void checkIn(int id, String stationName, int t) {
-        idRecord.put(id, t);
-        stationRecord.put(id, stationName);
+        stationRecord.put(id, new Start(stationName, t));
     }
 
     public void checkOut(int id, String stationName, int t) {
-        int usedTime = t - idRecord.get(id);
-        String key = stationRecord.get(id) + "," + stationName;
+        int usedTime = t - stationRecord.get(id).time;
+        String key = stationRecord.get(id).station + "," + stationName;
         int[] count = map.getOrDefault(key, new int[]{0,0});
         count[0] += usedTime;
         count[1]++;
@@ -34,8 +40,8 @@ class UndergroundSystem {
     }
 
     public double getAverageTime(String startStation, String endStation) {
-        int[] longs = map.get(startStation + "," + endStation);
-        return (double)longs[0]/longs[1];
+        int[] count = map.get(startStation + "," + endStation);
+        return (double)count[0]/count[1];
     }
 }
 
