@@ -20,11 +20,10 @@ public class IsNumber {
                 eIdx = i;
                 break;
             }
-        if (eIdx > -1) {
+        if (eIdx > -1)
             return eIdx != 0 && isIntegerOfFloat(s.substring(0, eIdx)) && isInteger(s.substring(eIdx+1));
-        }
         int dotIdx = s.indexOf('.');
-        if (dotIdx > -1) {
+        if (dotIdx > -1)
             if (dotIdx < s.length() - 1 && (s.charAt(dotIdx+1) == '-' || s.charAt(dotIdx+1) == '+'))
                 return false;
             else if (dotIdx == 0)
@@ -33,7 +32,6 @@ public class IsNumber {
                 return isInteger(s.substring(0,dotIdx));
             else
                 return preDot(s.substring(0, dotIdx)) && postDot(s.substring(dotIdx + 1));
-        }
 
 
         return isInteger(s);

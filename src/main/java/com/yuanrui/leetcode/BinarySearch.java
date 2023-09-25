@@ -1,13 +1,17 @@
 package com.yuanrui.leetcode;
 
+import java.util.Arrays;
+
 public class BinarySearch {
     public static void main(String[] args) {
         int[] nums = {1,3,5,6};
         int target = 2;
-        searchInsert(nums,target);
+//        searchInsert(nums,target);
+
+        System.out.println(Arrays.binarySearch(nums, 10));
 
 
-        System.out.println(10*10*10*10*10*10*10*10);
+//        System.out.println(10*10*10*10*10*10*10*10);
     }
 
 
