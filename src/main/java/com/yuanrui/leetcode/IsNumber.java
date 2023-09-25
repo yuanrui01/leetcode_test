@@ -14,8 +14,12 @@ public class IsNumber {
     public boolean isNumber(String s) {
         if (s.equals("."))
             return false;
-        s = s.toLowerCase();
-        int eIdx = s.indexOf('e');
+        int eIdx = -1;
+        for (int i = 0; i < s.length(); ++i)
+            if (s.charAt(i) == 'e' || s.charAt(i) == 'E') {
+                eIdx = i;
+                break;
+            }
         if (eIdx > -1) {
             return eIdx != 0 && isIntegerOfFloat(s.substring(0, eIdx)) && isInteger(s.substring(eIdx+1));
         }
@@ -81,9 +85,7 @@ public class IsNumber {
             return false;
         if (s.charAt(0) == '-' || s.charAt(0) == '+')
             s = s.substring(1);
-        if (s.equals("."))
-            return false;
-        if (s.isEmpty())
+        if (s.equals(".") || s.isEmpty())
             return false;
         int countDot = 0;
         for (int i = 0; i < s.length(); i++) {
