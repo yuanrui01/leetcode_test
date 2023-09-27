@@ -14,15 +14,12 @@ public class NextGreatestLetter {
         int right = letters.length - 1;
         int middle;
         while (left <= right) {
-            middle = (left + right) / 2;
+            middle = (left + right) >> 1;
             if (letters[middle] <= target)
                 left = left + 1;
             else
                 right = right - 1;
         }
-        if (right == -1 || left == letters.length)
-            return letters[0];
-        else
-            return letters[left];
+        return right == -1 || left == letters.length ? letters[0] : letters[left];
     }
 }
