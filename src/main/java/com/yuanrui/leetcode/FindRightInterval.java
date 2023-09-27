@@ -24,7 +24,7 @@ public class FindRightInterval {
             startIndex[i][0] = intervals[i][0];
             startIndex[i][1] = i;
         }
-        Arrays.sort(startIndex, Comparator.comparingInt(v->v[0]));
+        Arrays.sort(startIndex, Comparator.comparingInt(v -> v[0]));
         int[] ans = new int[len];
         for(int i = 0; i < len; ++i) {
             int left = 0;
