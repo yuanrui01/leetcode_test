@@ -62,4 +62,21 @@ public class BitSectUtils {
         }
         return right; // 或者 left+1
     }
+
+
+    /**
+     * 返回第一个小于等于target的元素下标，如果不存在则返回-1
+     */
+    private static int lessEqualTarget(List<Integer> list, int target) {
+        int left = 0;
+        int right = list.size() - 1;
+        while (left <= right) {
+            int middle = (left + right) >>> 1;
+            if (list.get(middle) <= target)
+                left = middle + 1;
+            else
+                right = middle - 1;
+        }
+        return left == 0 ? -1 : left - 1;
+    }
 }
