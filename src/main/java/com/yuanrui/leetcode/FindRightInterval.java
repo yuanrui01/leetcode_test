@@ -19,43 +19,61 @@ public class FindRightInterval {
      */
     public int[] findRightInterval(int[][] intervals) {
         int len = intervals.length;
-        Map<Integer, Integer> idxMap = new HashMap<>();
-        for (int i = 0; i < len; ++i)
-            idxMap.put(intervals[i].hashCode(), i);
-        Arrays.sort(intervals, Comparator.comparingInt(v -> v[0]));
-        Map<Integer, Integer> ansMap = new HashMap<>();
+        int[][] startIndex = new int[len][2];
         for (int i = 0; i < len; ++i) {
-            int iHashCode = intervals[i].hashCode();
-            // 对于已经排序的区间，逐个找出其右区间
-            int[] leftInterval = intervals[i];
-            int leftBegin = leftInterval[0];
-            int leftEnd = leftInterval[1];
-            if (leftBegin == leftEnd) {
-                ansMap.put(iHashCode, iHashCode);
-                continue;
-            }
-            int j = i + 1;
-            while (j < len) {
-                int rightBegin = intervals[j][0];
-                if (leftEnd <= rightBegin) {
-                    ansMap.put(iHashCode, intervals[j].hashCode());
-                    break;
-                }
-                ++j;
-            }
-            if (j == len)
-                ansMap.put(iHashCode, -1);
+            startIndex[i][0] = intervals[i][0];
+            startIndex[i][1] = i;
         }
+        Arrays.sort(startIndex, Comparator.comparingInt(v->v[0]));
         int[] ans = new int[len];
-        for (int[] interval : intervals) {
-            int hashcode = interval.hashCode();
-            ans[idxMap.get(hashcode)] = ansMap.get(hashcode) == -1 ? -1 : idxMap.get(ansMap.get(hashcode));
+        for(int i = 0; i < len; ++i) {
+            int left = 0;
+            int right = len - 1;
+            int middle;
+            int target = -1;
+            while (left <= right) {
+                middle = (left + right) >> 1;
+                if (startIndex[middle][0] >= intervals[i][1]) {
+                    right = middle - 1;
+                    target = startIndex[middle][1];
+                } else {
+                    left = middle + 1;
+                }
+            }
+            ans[i] = target;
+        }
+        return ans;
+    }
+
+    public int[] findRightInterval2(int[][] intervals) {
+        int n = intervals.length;
+        int[][] startIntervals = new int[n][2];
+        for (int i = 0; i < n; i++) {
+            startIntervals[i][0] = intervals[i][0];
+            startIntervals[i][1] = i;
+        }
+        Arrays.sort(startIntervals, Comparator.comparingInt(o -> o[0]));
+        int[] ans = new int[n];
+        for (int i = 0; i < n; i++) {
+            int left = 0;
+            int right = n - 1;
+            int target = -1;
+            while (left <= right) {
+                int mid = (left + right) / 2;
+                if (startIntervals[mid][0] >= intervals[i][1]) {
+                    target = startIntervals[mid][1];
+                    right = mid - 1;
+                } else {
+                    left = mid + 1;
+                }
+            }
+            ans[i] = target;
         }
         return ans;
     }
 
     public static void main(String[] args) {
-        int[][] intervals = {{1, 1}, {3, 4}};
+        int[][] intervals = {{3,4},{2,3},{1,2}};
         FindRightInterval findRightInterval = new FindRightInterval();
         int[] ans = findRightInterval.findRightInterval(intervals);
         System.out.println(Arrays.toString(ans));
