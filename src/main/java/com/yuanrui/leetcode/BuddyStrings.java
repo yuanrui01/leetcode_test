@@ -11,6 +11,7 @@ public class BuddyStrings {
     }
 
     public static boolean buddyStrings(String s, String goal) {
+        StringBuilder stringBuilder = new StringBuilder();
         // 0. 不必多说
         if (s.length() != goal.length())
             return false;
