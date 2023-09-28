@@ -23,9 +23,7 @@ public class FindMin {
 
     public static void main(String[] args) {
         FindMin findMin = new FindMin();
-
         int[] nums = {3,4,5,1,1,1,2,3};
-
         System.out.println(findMin.findMin(nums));
     }
 }
