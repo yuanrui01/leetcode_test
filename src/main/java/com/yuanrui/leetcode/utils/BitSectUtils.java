@@ -79,4 +79,19 @@ public class BitSectUtils {
         }
         return left == 0 ? -1 : left - 1;
     }
+
+    // 查找有序数组的最小元素
+    public static int findMin(int[] nums) {
+        int left = 0;
+        int right = nums.length - 1;
+        int middle;
+        while (left <= right) {
+            middle = (left + right) >>> 1;
+            if (nums[middle] <= nums[nums.length - 1])
+                right = middle - 1;
+            else
+                left = middle + 1;
+        }
+        return nums[left];
+    }
 }
