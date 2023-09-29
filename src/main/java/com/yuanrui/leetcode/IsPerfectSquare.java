@@ -27,5 +27,8 @@ public class IsPerfectSquare {
     public static void main(String[] args) {
         IsPerfectSquare isPerfectSquare = new IsPerfectSquare();
         System.out.println(isPerfectSquare.isPerfectSquare(2147483647));
+        long l1 = Integer.MAX_VALUE;
+        long l2 = Integer.MAX_VALUE;
+        System.out.println(l1 * l2);
     }
 }
