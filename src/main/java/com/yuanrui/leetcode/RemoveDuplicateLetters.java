@@ -10,21 +10,20 @@ import java.util.Deque;
 public class RemoveDuplicateLetters {
 
     public String removeDuplicateLetters(String s) {
-        int[] count = new int[26];
-        boolean[] visited = new boolean[26];
+        int[] count = new int[26]; // 计数，用于判断后续是否还有相同的字符
+        boolean[] inStack = new boolean[26]; // 判断字符是否在栈中
         for (int i = 0; i < s.length(); i++)
             count[s.charAt(i) - 'a']++;
         Deque<Integer> deque = new ArrayDeque<>();
         for (int i = 0; i < s.length(); ++i) {
-            if (!visited[s.charAt(i) - 'a']) {
-                while (!deque.isEmpty() && s.charAt(i) < s.charAt(deque.peek()) && count[s.charAt(deque.peek()) - 'a'] > 0) {
-                    Integer pop = deque.pop();
-                    visited[s.charAt(pop) - 'a'] = false;
-                }
+            int charIdx = s.charAt(i) - 'a';
+            if (!inStack[charIdx]) {
+                while (!deque.isEmpty() && s.charAt(i) < s.charAt(deque.peek()) && count[s.charAt(deque.peek()) - 'a'] > 0)
+                    inStack[s.charAt(deque.pop()) - 'a'] = false;
                 deque.push(i);
-                visited[s.charAt(i) - 'a'] = true;
+                inStack[charIdx] = true;
             }
-            count[s.charAt(i) - 'a']--;
+            count[charIdx]--; // 不管是否在栈中，当前元素都已成过客，减之！
         }
         StringBuilder sb = new StringBuilder();
         for (Integer i : deque)
