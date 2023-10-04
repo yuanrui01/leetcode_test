@@ -8,7 +8,6 @@ import java.util.Deque;
  * 739. 每日温度
  */
 public class DailyTemperatures {
-
     public int[] dailyTemperatures(int[] temperatures) {
         int[] ans = new int[temperatures.length];
         Deque<Integer> deque = new ArrayDeque<>();
