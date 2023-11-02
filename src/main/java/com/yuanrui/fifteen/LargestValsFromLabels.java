@@ -34,10 +34,10 @@ public class LargestValsFromLabels {
         int[] values = {9,8,8,7,6};
         int[] labels = {0,0,0,1,1};
         int numWanted = 3;
-        int userLimit = 1;
+        int useLimit = 1;
         LargestValsFromLabels largestValsFromLabels = new LargestValsFromLabels();
 
-        int i = largestValsFromLabels.largestValsFromLabels(values, labels, numWanted, userLimit);
+        int i = largestValsFromLabels.largestValsFromLabels(values, labels, numWanted, useLimit);
         System.out.println(i);
     }
 }
