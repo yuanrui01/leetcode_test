@@ -1,4 +1,4 @@
-package org.example;
+package org2.example;
 
 /**
  * description 双重锁检查，懒加载，线程安全，不浪费内存空间，执行效率高

@@ -1,6 +1,6 @@
-package org.example;
+package org2.example;
 
-import org.annotation.UseCase;
+import org2.annotation.UseCase;
 
 import java.util.*;
 

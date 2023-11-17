@@ -1,4 +1,4 @@
-package org.example;
+package org2.example;
 
 /**
  * description 枚举单例 线程安全 懒加载 不浪费内存 效率高

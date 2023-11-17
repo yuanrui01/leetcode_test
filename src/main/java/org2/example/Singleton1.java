@@ -1,4 +1,4 @@
-package org.example;
+package org2.example;
 
 /**
  * description 饿汉式单例，线程安全，非懒加载，容易浪费内存空间，执行效率高

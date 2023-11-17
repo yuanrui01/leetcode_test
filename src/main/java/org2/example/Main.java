@@ -1,4 +1,4 @@
-package org.example;
+package org2.example;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Supplier;

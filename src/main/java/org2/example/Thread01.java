@@ -1,4 +1,4 @@
-package org.example;
+package org2.example;
 
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;

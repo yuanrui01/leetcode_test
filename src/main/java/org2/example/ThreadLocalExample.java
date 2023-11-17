@@ -1,4 +1,4 @@
-package org.example;
+package org2.example;
 
 import java.text.SimpleDateFormat;
 import java.util.Random;

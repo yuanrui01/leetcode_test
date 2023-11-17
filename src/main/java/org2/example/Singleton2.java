@@ -1,4 +1,4 @@
-package org.example;
+package org2.example;
 
 /**
  * description 懒汉式单例，线程不安全，懒加载，不会浪费内存空间

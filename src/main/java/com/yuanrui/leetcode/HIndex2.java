@@ -17,12 +17,12 @@ public class HIndex2 {
                 left = middle + 1;
             }
         }
-        return left == 0 ? 0 : Math.min(left, citations[left - 1]);
+        return left == 0 ? 0 : Math.min(right, citations[right]);
     }
 
     public static void main(String[] args) {
         HIndex2 hIndex2 = new HIndex2();
-        int[] citations = {1,1,3};
+        int[] citations = {0, 100};
         System.out.println(hIndex2.hIndex(citations));
     }
 }
